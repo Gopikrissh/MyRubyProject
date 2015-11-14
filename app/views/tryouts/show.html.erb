@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @tryout.date %>
+</p>
+
+<p>
+  <strong>Fee:</strong>
+  <%= @tryout.fee %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @tryout.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @tryout.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @tryout.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @tryout.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @tryout.zip %>
+</p>
+
+<%= link_to 'Edit', edit_tryout_path(@tryout) %> |
+<%= link_to 'Back', tryouts_path %>
