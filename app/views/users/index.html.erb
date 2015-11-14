@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Coach</th>
+      <th>Guardian</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Gender</th>
+      <th>Dob</th>
+      <th>Address1</th>
+      <th>Address2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Experience</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.player_id %></td>
+        <td><%= user.coach_id %></td>
+        <td><%= user.guardian_id %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.gender %></td>
+        <td><%= user.dob %></td>
+        <td><%= user.address1 %></td>
+        <td><%= user.address2 %></td>
+        <td><%= user.city %></td>
+        <td><%= user.state %></td>
+        <td><%= user.zip %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.experience %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

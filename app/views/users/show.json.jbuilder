@@ -1,0 +1,1 @@
+json.extract! @user, :id, :player_id, :coach_id, :guardian_id, :first_name, :last_name, :username, :email, :phone, :gender, :dob, :address1, :address2, :city, :state, :zip, :email, :phone, :experience, :created_at, :updated_at
