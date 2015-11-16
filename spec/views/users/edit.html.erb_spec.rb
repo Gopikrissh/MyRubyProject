@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe "users/edit", type: :view do
   before(:each) do
     @user = assign(:user, User.create!(
-      :player_id => 1,
-      :coach_id => 1,
-      :guardian_id => 1,
+      :user => nil,
+      :type => "",
       :first_name => "MyString",
       :last_name => "MyString",
       :username => "MyString",
@@ -28,11 +27,9 @@ RSpec.describe "users/edit", type: :view do
 
     assert_select "form[action=?][method=?]", user_path(@user), "post" do
 
-      assert_select "input#user_player_id[name=?]", "user[player_id]"
+      assert_select "input#user_user_id[name=?]", "user[user_id]"
 
-      assert_select "input#user_coach_id[name=?]", "user[coach_id]"
-
-      assert_select "input#user_guardian_id[name=?]", "user[guardian_id]"
+      assert_select "input#user_type[name=?]", "user[type]"
 
       assert_select "input#user_first_name[name=?]", "user[first_name]"
 

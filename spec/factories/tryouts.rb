@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tryout do
-    date "2015-11-13 23:47:12"
+    date "2015-11-16 00:22:19"
 fee ""
 address1 "MyString"
 address2 "MyString"

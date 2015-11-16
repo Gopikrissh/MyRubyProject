@@ -69,6 +69,6 @@ class GuardiansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guardian_params
-      params[:guardian]
+      params.require(:guardian).permit(:user_id, :first_name, :last_name, :email, :phone)
     end
 end

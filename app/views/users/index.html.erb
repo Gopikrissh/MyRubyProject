@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Player</th>
-      <th>Coach</th>
-      <th>Guardian</th>
+      <th>User</th>
+      <th>Type</th>
       <th>First name</th>
       <th>Last name</th>
       <th>Username</th>
@@ -30,9 +29,8 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.player_id %></td>
-        <td><%= user.coach_id %></td>
-        <td><%= user.guardian_id %></td>
+        <td><%= user.user %></td>
+        <td><%= user.type %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.username %></td>
