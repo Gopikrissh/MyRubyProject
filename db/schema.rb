@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116174705) do
+ActiveRecord::Schema.define(version: 20151116182603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,9 @@ ActiveRecord::Schema.define(version: 20151116174705) do
     t.datetime "updated_at",       null: false
   end
 
+  add_index "evaluations", ["coach_id", "player_tryout_id"], name: "index_evaluations_on_coach_id_and_player_tryout_id", using: :btree
   add_index "evaluations", ["coach_id"], name: "index_evaluations_on_coach_id", using: :btree
+  add_index "evaluations", ["player_tryout_id", "coach_id"], name: "index_evaluations_on_player_tryout_id_and_coach_id", using: :btree
   add_index "evaluations", ["player_tryout_id"], name: "index_evaluations_on_player_tryout_id", using: :btree
 
   create_table "guardians", force: :cascade do |t|
@@ -50,7 +52,9 @@ ActiveRecord::Schema.define(version: 20151116174705) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "guardianships", ["guardian_id", "player_id"], name: "index_guardianships_on_guardian_id_and_player_id", using: :btree
   add_index "guardianships", ["guardian_id"], name: "index_guardianships_on_guardian_id", using: :btree
+  add_index "guardianships", ["player_id", "guardian_id"], name: "index_guardianships_on_player_id_and_guardian_id", using: :btree
   add_index "guardianships", ["player_id"], name: "index_guardianships_on_player_id", using: :btree
 
   create_table "player_tryouts", force: :cascade do |t|
@@ -61,7 +65,9 @@ ActiveRecord::Schema.define(version: 20151116174705) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "player_tryouts", ["player_id", "tryout_id"], name: "index_player_tryouts_on_player_id_and_tryout_id", using: :btree
   add_index "player_tryouts", ["player_id"], name: "index_player_tryouts_on_player_id", using: :btree
+  add_index "player_tryouts", ["tryout_id", "player_id"], name: "index_player_tryouts_on_tryout_id_and_player_id", using: :btree
   add_index "player_tryouts", ["tryout_id"], name: "index_player_tryouts_on_tryout_id", using: :btree
 
   create_table "tryouts", force: :cascade do |t|
