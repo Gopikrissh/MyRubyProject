@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Coach:</strong>
+  <%= @evaluation.coach %>
+</p>
+
+<p>
+  <strong>Player tryout:</strong>
+  <%= @evaluation.player_tryout %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @evaluation.rating %>
+</p>
+
+<p>
+  <strong>Speed:</strong>
+  <%= @evaluation.speed %>
+</p>
+
+<p>
+  <strong>Shooting:</strong>
+  <%= @evaluation.shooting %>
+</p>
+
+<p>
+  <strong>Passing:</strong>
+  <%= @evaluation.passing %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @evaluation.comment %>
+</p>
+
+<%= link_to 'Edit', edit_evaluation_path(@evaluation) %> |
+<%= link_to 'Back', evaluations_path %>
