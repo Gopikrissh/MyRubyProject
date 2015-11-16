@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @player_tryout.player %>
+</p>
+
+<p>
+  <strong>Tryout:</strong>
+  <%= @player_tryout.tryout %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @player_tryout.payment %>
+</p>
+
+<%= link_to 'Edit', edit_player_tryout_path(@player_tryout) %> |
+<%= link_to 'Back', player_tryouts_path %>

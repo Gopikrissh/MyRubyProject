@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Player Tryouts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Tryout</th>
+      <th>Payment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @player_tryouts.each do |player_tryout| %>
+      <tr>
+        <td><%= player_tryout.player %></td>
+        <td><%= player_tryout.tryout %></td>
+        <td><%= player_tryout.payment %></td>
+        <td><%= link_to 'Show', player_tryout %></td>
+        <td><%= link_to 'Edit', edit_player_tryout_path(player_tryout) %></td>
+        <td><%= link_to 'Destroy', player_tryout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Player tryout', new_player_tryout_path %>

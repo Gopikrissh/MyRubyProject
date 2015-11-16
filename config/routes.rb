@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :player_tryouts
   resources :tryouts
   resources :guardians
   resources :coaches
