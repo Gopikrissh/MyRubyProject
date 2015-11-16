@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Guardianships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Guardian</th>
+      <th>Player</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guardianships.each do |guardianship| %>
+      <tr>
+        <td><%= guardianship.guardian %></td>
+        <td><%= guardianship.player %></td>
+        <td><%= link_to 'Show', guardianship %></td>
+        <td><%= link_to 'Edit', edit_guardianship_path(guardianship) %></td>
+        <td><%= link_to 'Destroy', guardianship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Guardianship', new_guardianship_path %>

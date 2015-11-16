@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Guardian:</strong>
+  <%= @guardianship.guardian %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @guardianship.player %>
+</p>
+
+<%= link_to 'Edit', edit_guardianship_path(@guardianship) %> |
+<%= link_to 'Back', guardianships_path %>
