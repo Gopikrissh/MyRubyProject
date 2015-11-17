@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>User:</strong>
+  <%= @user.user %>
+</p>
+
+<p>
   <strong>Type:</strong>
   <%= @user.type %>
 </p>

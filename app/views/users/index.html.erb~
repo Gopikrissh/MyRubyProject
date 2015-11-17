@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>User</th>
       <th>Type</th>
       <th>First name</th>
       <th>Last name</th>
