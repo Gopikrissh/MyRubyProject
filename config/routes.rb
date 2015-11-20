@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :profiles
+  root 'tryouts#index'
+
   resources :guardianships
   resources :evaluations
   resources :player_tryouts

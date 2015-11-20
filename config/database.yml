@@ -5,9 +5,9 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: <%=ENV["DATABASE_NAME"] %>
+  adapter: <%=ENV["DATABASE_NAME"]%>
   pool: 5
-  host: <%=ENV["DATABASE_HOST"] %>
+  host: <%=ENV["DATABASE_HOST"]%>
   username: <%=ENV["DATABASE_USER"]%>
   password: <%=ENV["DATABASE_PASSWORD"]%>
   timeout: 5000
