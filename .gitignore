@@ -18,4 +18,5 @@
 /.env
 */.swp
 */.DS_Store
+/.project
 

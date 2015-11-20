@@ -14,6 +14,7 @@ class PlayersController < ApplicationController
 
   # GET /players/new
   def new
+    authenticate_profile!
     @player = Player.new
   end
 
@@ -69,6 +70,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params[:player]
+      params.require(:player).permit(:type, :first_name, :last_name, :username, :email, :phone, :gender, :dob, :address1, :address2, :city, :state, :zip, :email, :phone, :experience)
     end
 end
