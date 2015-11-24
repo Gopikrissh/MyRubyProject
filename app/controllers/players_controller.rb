@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show,:edit, :update, :destroy]
+  before_action :authenticate_profile!
 
   # GET /players
   # GET /players.json
@@ -13,18 +14,32 @@ class PlayersController < ApplicationController
   end
 
   # GET /players/new
-  def new
-    @player = Player.new
+  def new 
+    if Player.exists?(current_profile.id)
+      #do nothing for now
+      redirect_to edit_player_path(current_profile.id), notice: 'Player exists'
+    else
+      @player = Player.new
+      @player.assign_attributes(:profile_id => current_profile.id)
+      @player.save
+    end
+
   end
 
   # GET /players/1/edit
   def edit
+    #@player = Player.create
+
+    #authenticate_profile!
+    #@player.assign_attributes(:profile_id => current_profile.id)
   end
 
   # POST /players
   # POST /players.json
   def create
-    @player = Player.new(player_params)
+
+    @profile = Profile.find(params[:profile_id])
+    @player = @profile.players.create(player_params)
 
     respond_to do |format|
       if @player.save
@@ -62,13 +77,13 @@ class PlayersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_player
-      @player = Player.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_player
+    @player = Player.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def player_params
-      params[:player]
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def player_params
+    params.require(:player).permit(:type, :first_name, :last_name, :username, :email, :phone, :gender, :dob, :address1, :address2, :city, :state, :zip, :experience, :profile_id)
+  end
 end

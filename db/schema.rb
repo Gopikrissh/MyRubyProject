@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116184528) do
+ActiveRecord::Schema.define(version: 20151120203305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "evaluations", force: :cascade do |t|
-    t.string   "coach_id"
+    t.integer  "coach_id"
     t.integer  "player_tryout_id"
     t.integer  "rating"
     t.integer  "speed"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20151116184528) do
 
   create_table "guardianships", force: :cascade do |t|
     t.integer  "guardian_id"
-    t.string   "player_id"
+    t.integer  "player_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20151116184528) do
   add_index "guardianships", ["player_id", "guardian_id"], name: "index_guardianships_on_player_id_and_guardian_id", using: :btree
 
   create_table "player_tryouts", force: :cascade do |t|
-    t.string   "player_id"
+    t.integer  "player_id"
     t.integer  "tryout_id"
     t.integer  "payment"
     t.datetime "created_at", null: false
@@ -63,6 +63,24 @@ ActiveRecord::Schema.define(version: 20151116184528) do
 
   add_index "player_tryouts", ["player_id", "tryout_id"], name: "index_player_tryouts_on_player_id_and_tryout_id", using: :btree
   add_index "player_tryouts", ["tryout_id", "player_id"], name: "index_player_tryouts_on_tryout_id_and_player_id", using: :btree
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "profiles", ["email"], name: "index_profiles_on_email", unique: true, using: :btree
+  add_index "profiles", ["reset_password_token"], name: "index_profiles_on_reset_password_token", unique: true, using: :btree
 
   create_table "tryouts", force: :cascade do |t|
     t.datetime "date"
@@ -93,9 +111,11 @@ ActiveRecord::Schema.define(version: 20151116184528) do
     t.text     "experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "profile_id"
   end
 
   add_index "users", ["id", "type"], name: "index_users_on_id_and_type", using: :btree
+  add_index "users", ["profile_id"], name: "index_users_on_profile_id", using: :btree
 
   add_foreign_key "evaluations", "player_tryouts"
   add_foreign_key "guardians", "users"

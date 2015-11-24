@@ -1,10 +1,11 @@
 class TryoutsController < ApplicationController
-  before_action :set_tryout, only: [:show, :edit, :update, :destroy]
+  before_action :set_tryout , only: [:show, :edit, :update, :destroy]
 
   # GET /tryouts
   # GET /tryouts.json
   def index
     @tryouts = Tryout.all
+#    binding.pry
   end
 
   # GET /tryouts/1

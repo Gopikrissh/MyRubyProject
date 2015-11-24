@@ -15,9 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
-#config/database.yml
 /.env
 */.swp
 */.DS_Store
-/.env~
-/.gitignore~
+/.project
+
