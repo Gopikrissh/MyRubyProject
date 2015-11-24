@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :profiles
   root 'tryouts#index'
 
+resources :profiles do
+  resources :players
+end
+
   resources :guardianships
   resources :evaluations
   resources :player_tryouts

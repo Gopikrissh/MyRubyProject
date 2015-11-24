@@ -4,5 +4,5 @@ class Profile < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-   has_one :user
+   has_one :user, dependent: :destroy
 end
