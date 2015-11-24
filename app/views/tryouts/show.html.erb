@@ -1,39 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @tryout.date %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Tryout Details <%= link_to "Register", new_tryout_player_tryout_path(@tryout), class:'btn btn-success pull-right' %></h1>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+          <strong>Date:</strong>
+          <%= @tryout.date.to_s(:long) %>
+        </p>
 
-<p>
-  <strong>Fee:</strong>
-  <%= @tryout.fee %>
-</p>
+        <p>
+          <strong>Fee:</strong>
+          $<%= number_with_precision(@tryout.fee, precision: 2) %>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <p>
+          <strong>Address Line 1:</strong>
+          <%= @tryout.address1 %>
+        </p>
 
-<p>
-  <strong>Address1:</strong>
-  <%= @tryout.address1 %>
-</p>
+        <p>
+          <strong>Address Line 2:</strong>
+          <%= @tryout.address2 %>
+        </p>
 
-<p>
-  <strong>Address2:</strong>
-  <%= @tryout.address2 %>
-</p>
+        <p>
+          <strong>City:</strong>
+          <%= @tryout.city %>
+        </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @tryout.city %>
-</p>
+        <p>
+          <strong>State:</strong>
+          <%= @tryout.state %>
+        </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @tryout.state %>
-</p>
+        <p>
+          <strong>ZIP:</strong>
+          <%= @tryout.zip %>
+        </p>
+      </div>
+      <div class="col-md-4">
 
-<p>
-  <strong>Zip:</strong>
-  <%= @tryout.zip %>
-</p>
-
-<%= link_to 'Edit', edit_tryout_path(@tryout) %> |
-<%= link_to 'Back', tryouts_path %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>Registered Players</h1>
+  </div>
+  <div class="panel-body">
+    <% @tryout.player_tryouts.each do |pt| %>
+        <tr>
+          <td><%= pt.player %></td>
+        </tr>
+    <% end %>
+  </div>
+</div>

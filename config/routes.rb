@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
   resources :guardianships
   resources :evaluations
-  resources :player_tryouts
-  resources :tryouts
   resources :guardians
   resources :coaches
   resources :players
   resources :users
+
+  resources :tryouts do
+    resources :player_tryouts
+  end
+  resources :player_tryouts
+
+  root 'tryouts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

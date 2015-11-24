@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
-gem 'therubyracer'
+
+gem 'tzinfo-data'
+gem 'execjs', '~> 2.6'
+gem 'coffee-script-source'
+
 gem 'rails'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.5'
@@ -19,6 +23,7 @@ gem 'rubocop'
 gem 'paperclip'
 gem 'stripe'
 gem 'mandrill-api'
+gem 'libv8', '~>3.16.14.13'
 
 group :development, :test do
   gem 'simplecov'
