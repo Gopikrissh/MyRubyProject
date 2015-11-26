@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show,:edit, :update, :destroy]
-  before_action :authenticate_profile!
+  #before_action :authenticate_profile!
 
   # GET /players
   # GET /players.json
@@ -28,10 +28,6 @@ class PlayersController < ApplicationController
 
   # GET /players/1/edit
   def edit
-    #@player = Player.create
-
-    #authenticate_profile!
-    #@player.assign_attributes(:profile_id => current_profile.id)
   end
 
   # POST /players
@@ -39,7 +35,7 @@ class PlayersController < ApplicationController
   def create
 
     @profile = Profile.find(params[:profile_id])
-    @player = @profile.players.create(player_params)
+    @player = @profile.user.create(player_params)
 
     respond_to do |format|
       if @player.save

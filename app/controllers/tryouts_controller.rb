@@ -5,7 +5,7 @@ class TryoutsController < ApplicationController
   # GET /tryouts.json
   def index
     @tryouts = Tryout.all
-#    binding.pry
+    binding.pry
   end
 
   # GET /tryouts/1
