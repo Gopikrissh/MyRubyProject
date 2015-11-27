@@ -4,7 +4,7 @@
 <head>
   <title>Soccer Tryout Manager</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +40,8 @@
   <%= link_to "Login", new_profile_session_path, :class => 'navbar-link'  %>
 <% end %>
 
-<%= yield %>
+
+
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#336699">
   <div class="container">
@@ -69,9 +70,7 @@
 
 <!-- Page Content -->
 <div class="container">
-  <p><%= content_tag(:p, notice, class: 'alert alert-info') if notice %></p>
 
-  <p><%= content_tag(:p, notice, class: 'alert alert-danger') if alert %></p>
 
   <%= yield %>
 
