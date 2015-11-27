@@ -8,12 +8,17 @@ end
 
   resources :guardianships
   resources :evaluations
-  resources :player_tryouts
-  resources :tryouts
   resources :guardians
   resources :coaches
   resources :players
   resources :users
+
+  resources :tryouts do
+    resources :player_tryouts
+  end
+
+  resources :player_tryouts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

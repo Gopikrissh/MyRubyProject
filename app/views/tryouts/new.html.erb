@@ -1,5 +1,9 @@
-<h1>New Tryout</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', tryouts_path %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>New Tryout</h1>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+    <%= link_to 'Back', tryouts_path, class:'btn btn-default pull-left' %>
+  </div>
+</div>

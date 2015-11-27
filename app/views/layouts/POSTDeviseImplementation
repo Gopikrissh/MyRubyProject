@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Soccer Tryout Manager</title>
+  <title>Personal Wallet Application</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'default', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,6 +12,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <title></title>
 
   <!-- Bootstrap Core CSS -->
   <link href="bootstrap.css" rel="stylesheet">
@@ -22,25 +23,6 @@
 
 <body>
 
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-
-
-<p class="navbar-text pull-right">
-<% if profile_signed_in? %>
-  Logged in as <strong><%= current_profile.email %></strong>.
-  <%= link_to 'Edit profile', edit_profile_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_profile_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_profile_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_profile_session_path, :class => 'navbar-link'  %>
-<% end %>
-
-<%= yield %>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:#336699">
   <div class="container">
@@ -52,14 +34,45 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Soccer Tryout Manager", tryouts_path, {:class => "navbar-brand", :style => "color:white"} %>
+      <%= link_to "Personal Wallet", '#', {:class => "navbar-brand"} %>
 
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li>
+              <%= link_to current_user.email, root_path %>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li>
+                  <%= link_to 'User Profile', edit_user_path(current_user.id) %>
+                </li>
+                <li>
+                  <%= link_to 'User Settings', edit_user_registration_path %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
+              <!-- /.dropdown-user -->
+            </li>
+        <% else %>
+            <li>
+              <%= link_to "Sign Up", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "Sign In", new_user_session_path %>
+            </li>
+        <% end %>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -79,8 +92,8 @@
   <div class="navbar navbar-default navbar-fixed-bottom" style="background-color:#336699">
     <div class="container" style="padding-top: 10px">
       <p class="text-center" style="color: #9d9d9d;">Copyright &copy;
-        <a style="color: #fff;" href="mailto:heileman@unm.edu?Subject=ECE%20595%20-%20Soccer%20Tryout%20Manager" target="_blank">
-          <b><u>University of New Mexico</u></b></a> - Soccer Tryout Manager 2015</p>
+        <a style="color: #fff;" href="mailto:TrentJSeaman@gmail.com?Subject=ECE%20595%20-%20Personal%20Wallet" target="_blank">
+          <b><u>Trent Seaman</u></b></a> - Wallet Application 2015</p>
     </div>
   </div>
 
@@ -97,3 +110,7 @@
 
 </html>
 
+
+</div>
+</body>
+</html>

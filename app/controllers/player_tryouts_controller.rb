@@ -1,5 +1,6 @@
 class PlayerTryoutsController < ApplicationController
   before_action :set_player_tryout, only: [:show, :edit, :update, :destroy]
+  before_action :set_tryout
 
   # GET /player_tryouts
   # GET /player_tryouts.json
@@ -25,6 +26,7 @@ class PlayerTryoutsController < ApplicationController
   # POST /player_tryouts.json
   def create
     @player_tryout = PlayerTryout.new(player_tryout_params)
+    @player_tryout.tryout_id = @tryout.id
 
     respond_to do |format|
       if @player_tryout.save
@@ -66,6 +68,10 @@ class PlayerTryoutsController < ApplicationController
     def set_player_tryout
       @player_tryout = PlayerTryout.find(params[:id])
     end
+
+  def set_tryout
+    @tryout = Tryout.find(params[:tryout_id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_tryout_params
