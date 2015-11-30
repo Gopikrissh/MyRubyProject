@@ -27,6 +27,7 @@ class PlayerTryoutsController < ApplicationController
   def create
     @player_tryout = PlayerTryout.new(player_tryout_params)
     @player_tryout.tryout_id = @tryout.id
+    @player_tryout.
 
     respond_to do |format|
       if @player_tryout.save

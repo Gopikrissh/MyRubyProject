@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'therubyracer'
+gem 'therubyracer', :platform => :ruby
+gem 'tzinfo-data'x``
 gem 'rails'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.5'

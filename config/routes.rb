@@ -18,6 +18,10 @@ end
     resources :player_tryouts
   end
 
+  resources :player_tryouts do
+    resources :players
+  end
+
   resources :player_tryouts
 
   # The priority is based upon order of creation: first created -> highest priority.
