@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show,:edit, :update, :destroy]
-  #before_action :authenticate_profile!
+  skip_before_action :authenticate_profile!
 
   # GET /players
   # GET /players.json
@@ -15,9 +15,14 @@ class PlayersController < ApplicationController
 
   # GET /players/new
   def new 
+    
     if Player.exists?(current_profile.id)
       #do nothing for now
-      redirect_to edit_player_path(current_profile.id), notice: 'Player exists'
+      @tryout = Tryout.find(params[:tryout_id])
+      #redirect_to "/players/"+current_profile.id.to_s+"/edit?tryout_id="+@tryout.id.to_s, notice: 'Player exists'
+      #redirect_to edit_player_path([current_profile.id, tryout_id: @tryout.id]), notice: 'Player exists'
+      redirect_to edit_tryout_player_path(@tryout.id,current_profile.id), notice: 'Player exists'
+      
     else
       @player = Player.new
       @player.assign_attributes(:profile_id => current_profile.id)
@@ -53,7 +58,7 @@ class PlayersController < ApplicationController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.html { redirect_to confirm_tryout_path(@tryout.id), notice: 'Player was successfully updated.' }
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit }
@@ -76,6 +81,7 @@ class PlayersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_player
     @player = Player.find(params[:id])
+    @tryout = Tryout.find(params[:tryout_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

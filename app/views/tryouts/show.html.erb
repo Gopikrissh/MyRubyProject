@@ -1,13 +1,17 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 
-<%= link_to 'Register to this Tryout Online',  new_player_path %> |
+<!-- <%= form_for([@tryout, PlayerTryout.new]) do |f| %>
+  <p><%= f.submit "Register to this Tryout Online"%> </p>
+<%end%> -->
+
+<%= link_to 'Register to this Tryout Online',  player_tryouts_path(tryout_id: @tryout.id), method: :post %> |
 <%= link_to 'Edit', edit_tryout_path(@tryout) %> |
 <%= link_to 'Back', tryouts_path %>
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h1>Tryout Details <%= link_to "Register", new_tryout_player_tryout_path(@tryout), class:'btn btn-success pull-right' %></h1>
+    <h1>Tryout Details <%= link_to "Register", tryouts_path, class:'btn btn-success pull-right' %></h1>
   </div>
   <div class="panel-body">
     <div class="row">

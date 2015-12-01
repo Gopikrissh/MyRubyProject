@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
   devise_for :profiles
   root 'tryouts#index'
-
+  
+get 'confirm' => 'tryouts#confirm', as: :tryouts_confirm
 
 resources :profiles do
+  resources :players
+end
+
+resources :tryouts do
   resources :players
 end
 
@@ -13,6 +18,13 @@ end
   resources :coaches
   resources :players
   resources :users
+
+  resources :tryouts do
+    member do
+get 'confirm' => 'tryouts#confirm'
+
+    end	
+ end
 
   resources :tryouts do
     resources :player_tryouts

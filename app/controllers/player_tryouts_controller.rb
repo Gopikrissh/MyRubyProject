@@ -1,6 +1,6 @@
 class PlayerTryoutsController < ApplicationController
   before_action :set_player_tryout, only: [:show, :edit, :update, :destroy]
-  before_action :set_tryout
+  #before_action :set_tryout
 
   # GET /player_tryouts
   # GET /player_tryouts.json
@@ -25,12 +25,17 @@ class PlayerTryoutsController < ApplicationController
   # POST /player_tryouts
   # POST /player_tryouts.json
   def create
-    @player_tryout = PlayerTryout.new(player_tryout_params)
-    @player_tryout.tryout_id = @tryout.id
+  #@post = Post.find(params[:post_id])
+ #   @comment = @post.comments.create(comment_params)
+
+    @tryout = Tryout.find(params[:tryout_id])
+    @player_tryout = @tryout.player_tryouts.create(:player_id => current_profile.id)
+
 
     respond_to do |format|
       if @player_tryout.save
-        format.html { redirect_to @player_tryout, notice: 'Player tryout was successfully created.' }
+        format.html { redirect_to new_tryout_player_path(@tryout.id), notice: 'Player tryout was successfully created.' }
+        #format.html { redirect_to new_player_path(tryout_id: @tryout.id), notice: 'Player tryout was successfully created.' }
         format.json { render :show, status: :created, location: @player_tryout }
       else
         format.html { render :new }
@@ -69,9 +74,9 @@ class PlayerTryoutsController < ApplicationController
       @player_tryout = PlayerTryout.find(params[:id])
     end
 
-  def set_tryout
-    @tryout = Tryout.find(params[:tryout_id])
-  end
+ # def set_tryout
+  #  @tryout = Tryout.find(params[:tryout_id])
+ # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_tryout_params
