@@ -19,4 +19,6 @@
 */.swp
 */.DS_Store
 /.project
+/Gemfile
+/config/database.yml
 

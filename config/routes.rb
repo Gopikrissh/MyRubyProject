@@ -1,19 +1,37 @@
 Rails.application.routes.draw do
   devise_for :profiles
   root 'tryouts#index'
+  
+get 'confirm' => 'tryouts#confirm', as: :tryouts_confirm
 
 resources :profiles do
   resources :players
 end
 
+resources :tryouts do
+  resources :players
+end
+
   resources :guardianships
   resources :evaluations
-  resources :player_tryouts
-  resources :tryouts
   resources :guardians
   resources :coaches
   resources :players
   resources :users
+
+  resources :tryouts do
+    member do
+get 'confirm' => 'tryouts#confirm'
+
+    end	
+ end
+
+  resources :tryouts do
+    resources :player_tryouts
+  end
+
+  resources :player_tryouts
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
