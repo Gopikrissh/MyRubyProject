@@ -1,14 +1,10 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-
-<%= link_to 'Register to this Tryout Online',  player_tryouts_path(tryout_id: @tryout.id), method: :post %> |
-<%= link_to 'Edit', edit_tryout_path(@tryout) %> |
-<%= link_to 'Back', tryouts_path %>
-
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h1><%= link_to "Tryout Details", edit_tryout_path(@tryout), style:'color:white' %> |
-        <%= link_to "Register", player_tryouts_path(tryout_id: @tryout.id),method: :post, class:'btn btn-success pull-right', style:'color:white' %></h1>
+    <h1><%= link_to "Tryout Details", edit_tryout_path(@tryout), style:'color:white' %>
+        <%= link_to "Register", player_tryouts_path(tryout_id: @tryout.id),method: :post, class:'btn btn-success pull-right', style:'color:white' %>
+    </h1>
   </div>
   <div class="panel-body">
     <div class="row">
