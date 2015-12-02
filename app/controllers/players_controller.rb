@@ -27,6 +27,8 @@ class PlayersController < ApplicationController
       @player = Player.new
       @player.assign_attributes(:profile_id => current_profile.id)
       @player.save
+      @player = Player.find(current_profile.id)
+      @tryout = Tryout.find(params[:tryout_id])
     end
 
   end
@@ -38,13 +40,13 @@ class PlayersController < ApplicationController
   # POST /players
   # POST /players.json
   def create
-
-    @profile = Profile.find(params[:profile_id])
-    @player = @profile.user.create(player_params)
-
+    #I don't think this method is used so far, so gonna leave it like this -- Alan
+    #@profile = Profile.find(params[:profile_id])
+    #@player = @profile.user.create(player_params)
+    @player = Player.new(player_params)
     respond_to do |format|
       if @player.save
-        format.html { redirect_to @player, notice: 'Player was successfully created.' }
+        format.html { redirect_to confirm_tryout_path(@tryout.id), notice: 'Player was successfully created.' }
         format.json { render :show, status: :created, location: @player }
       else
         format.html { render :new }
