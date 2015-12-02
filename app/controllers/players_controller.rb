@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show,:edit, :update, :destroy]
+  skip_before_action :authenticate_profile!
 
   # GET /players
   # GET /players.json
@@ -13,9 +14,21 @@ class PlayersController < ApplicationController
   end
 
   # GET /players/new
-  def new
-    authenticate_profile!
-    @player = Player.new
+  def new 
+    
+    if Player.exists?(current_profile.id)
+      #do nothing for now
+      @tryout = Tryout.find(params[:tryout_id])
+      #redirect_to "/players/"+current_profile.id.to_s+"/edit?tryout_id="+@tryout.id.to_s, notice: 'Player exists'
+      #redirect_to edit_player_path([current_profile.id, tryout_id: @tryout.id]), notice: 'Player exists'
+      redirect_to edit_tryout_player_path(@tryout.id,current_profile.id), notice: 'Player exists'
+      
+    else
+      @player = Player.new
+      @player.assign_attributes(:profile_id => current_profile.id)
+      @player.save
+    end
+
   end
 
   # GET /players/1/edit
@@ -25,7 +38,9 @@ class PlayersController < ApplicationController
   # POST /players
   # POST /players.json
   def create
-    @player = Player.new(player_params)
+
+    @profile = Profile.find(params[:profile_id])
+    @player = @profile.user.create(player_params)
 
     respond_to do |format|
       if @player.save
@@ -43,7 +58,7 @@ class PlayersController < ApplicationController
   def update
     respond_to do |format|
       if @player.update(player_params)
-        format.html { redirect_to @player, notice: 'Player was successfully updated.' }
+        format.html { redirect_to confirm_tryout_path(@tryout.id), notice: 'Player was successfully updated.' }
         format.json { render :show, status: :ok, location: @player }
       else
         format.html { render :edit }
@@ -63,13 +78,14 @@ class PlayersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_player
-      @player = Player.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_player
+    @player = Player.find(params[:id])
+    @tryout = Tryout.find(params[:tryout_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def player_params
-      params.require(:player).permit(:type, :first_name, :last_name, :username, :email, :phone, :gender, :dob, :address1, :address2, :city, :state, :zip, :email, :phone, :experience)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def player_params
+    params.require(:player).permit(:type, :first_name, :last_name, :username, :email, :phone, :gender, :dob, :address1, :address2, :city, :state, :zip, :experience, :profile_id)
+  end
 end

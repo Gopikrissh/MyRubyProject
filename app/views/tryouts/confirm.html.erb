@@ -1,0 +1,128 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+
+<%= link_to 'Pay with PayPal',  tryouts_path %> |
+<%= link_to 'Edit', edit_player_path(current_profile.id) %> |
+<%= link_to 'Back', tryouts_path %>
+
+<div class="panel panel-primary">
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+          <strong>Date:</strong>
+          <%= @tryout.date.to_s(:long) %>
+        </p>
+
+        <p>
+          <strong>Fee:</strong>
+          $<%= number_with_precision(@tryout.fee, precision: 2) %>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <p>
+          <strong>Address Line 1:</strong>
+          <%= @tryout.address1 %>
+        </p>
+
+        <p>
+          <strong>Address Line 2:</strong>
+          <%= @tryout.address2 %>
+        </p>
+
+        <p>
+          <strong>City:</strong>
+          <%= @tryout.city %>
+        </p>
+
+        <p>
+          <strong>State:</strong>
+          <%= @tryout.state %>
+        </p>
+
+        <p>
+          <strong>ZIP:</strong>
+          <%= @tryout.zip %>
+        </p>
+
+<p>
+  <strong>Profile_id:</strong>
+  <%= @player.profile_id %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%= @player.type %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @player.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @player.last_name %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @player.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @player.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @player.phone %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @player.gender %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @player.dob %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @player.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @player.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @player.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @player.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @player.zip %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @player.experience %>
+</p>
+      </div>
+      <div class="col-md-4">
+
+      </div>
+    </div>
+  </div>
+</div>
