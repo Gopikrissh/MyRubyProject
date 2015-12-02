@@ -30,8 +30,6 @@ class PlayerTryoutsController < ApplicationController
 
     @tryout = Tryout.find(params[:tryout_id])
     @player_tryout = @tryout.player_tryouts.create(:player_id => current_profile.id)
-
-
     respond_to do |format|
       if @player_tryout.save
         format.html { redirect_to new_tryout_player_path(@tryout.id), notice: 'Player tryout was successfully created.' }

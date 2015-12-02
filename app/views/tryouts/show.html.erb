@@ -1,59 +1,43 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-
-<!-- <%= form_for([@tryout, PlayerTryout.new]) do |f| %>
-  <p><%= f.submit "Register to this Tryout Online"%> </p>
-<%end%> -->
-
-<%= link_to 'Register to this Tryout Online',  player_tryouts_path(tryout_id: @tryout.id), method: :post %> |
-<%= link_to 'Edit', edit_tryout_path(@tryout) %> |
-<%= link_to 'Back', tryouts_path %>
-
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h1>Tryout Details <%= link_to "Register", tryouts_path, class:'btn btn-success pull-right' %></h1>
+    <h1><%= link_to "Tryout Details", edit_tryout_path(@tryout), style:'color:white' %>
+        <%= link_to "Register", player_tryouts_path(tryout_id: @tryout.id),method: :post, class:'btn btn-success pull-right', style:'color:white' %>
+    </h1>
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-4">
-        <p>
-          <strong>Date:</strong>
-          <%= @tryout.date.to_s(:long) %>
-        </p>
-
-        <p>
-          <strong>Fee:</strong>
-          $<%= number_with_precision(@tryout.fee, precision: 2) %>
-        </p>
+      <div class="col-md-6">
+        <div class="col-md-6">
+          <h3><strong>Date:</strong></h3>
+          <h4><i><%= @tryout.date.strftime('%A %d, %Y') %></i></h4>
+          <h3><strong>Time:</strong></h3>
+          <h4><i><%= @tryout.date.strftime('%I:%M %P') %></i></h4>
+          <h3><strong>Fee:</strong></h3>
+          <h4><i>$<%= number_with_precision(@tryout.fee, precision: 2) %></i></h4>
+        </div>
+        <div class="col-md-6">
+          <h3><strong>Address Line 1:</strong></h3>
+          <h4><i><%= @tryout.address1 %></i></h4>
+          <h3><strong>Address Line 2:</strong></h3>
+          <h4><i><%= @tryout.address2 %></i></h4>
+          <h3><strong>City:</strong></h3>
+          <h4><i><%= @tryout.city %></i></h4>
+          <h3><strong>State:</strong></h3>
+          <h4><i><%= @tryout.state %></i></h4>
+          <h3><strong>ZIP:</strong></h3>
+          <h4><i><%= @tryout.zip %></i></h4>
+        </div>
       </div>
-      <div class="col-md-4">
-        <p>
-          <strong>Address Line 1:</strong>
-          <%= @tryout.address1 %>
-        </p>
-
-        <p>
-          <strong>Address Line 2:</strong>
-          <%= @tryout.address2 %>
-        </p>
-
-        <p>
-          <strong>City:</strong>
-          <%= @tryout.city %>
-        </p>
-
-        <p>
-          <strong>State:</strong>
-          <%= @tryout.state %>
-        </p>
-
-        <p>
-          <strong>ZIP:</strong>
-          <%= @tryout.zip %>
-        </p>
-      </div>
-      <div class="col-md-4">
-
+      <div class="col-md-6">
+        <iframe
+            width="500"
+            height="400"
+            frameborder="5" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAdg49Tak1UQabDrP0djPBJlP6Kgp3SG3E
+            &q= <%=@tryout.address1%> <%=@tryout.address2 %> <%=@tryout.city%> <%=@tryout.state%> <%=@tryout.zip%>"  allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
@@ -65,7 +49,7 @@
   <div class="panel-body">
     <% @tryout.player_tryouts.each do |pt| %>
         <tr>
-          <td><%= pt.player %></td>
+          <td><%= pt %></td>
         </tr>
     <% end %>
   </div>
