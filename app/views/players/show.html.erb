@@ -1,82 +1,77 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Profile_id:</strong>
-  <%= @player.profile_id %>
-</p>
-<p>
-  <strong>Type:</strong>
-  <%= @player.type %>
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3>Player Information: <u><%= link_to @player.first_name + ' ' + @player.last_name, edit_player_path(@player), style:'color:white' %></u></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <p>
+          <strong>Type:</strong>
+          <%= @player.type %>
+        </p>
+        <p>
+          <strong>Username:</strong>
+          <%= @player.username %>
+        </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @player.first_name %>
-</p>
+        <p>
+          <strong>Email:</strong>
+          <%= @player.email %>
+        </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @player.last_name %>
-</p>
+        <p>
+          <strong>Phone:</strong>
+          <%= @player.phone %>
+        </p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @player.username %>
-</p>
+        <p>
+          <strong>Gender:</strong>
+          <%= @player.gender %>
+        </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @player.email %>
-</p>
+        <p>
+          <strong>Date of Birth:</strong>
+          <%= @player.dob.strftime('%m/%d/%Y %I:%M %P') %>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <p>
+          <strong>Address1:</strong>
+          <%= @player.address1 %>
+        </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @player.phone %>
-</p>
+        <p>
+          <strong>Address2:</strong>
+          <%= @player.address2 %>
+        </p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @player.gender %>
-</p>
+        <p>
+          <strong>City:</strong>
+          <%= @player.city %>
+        </p>
 
-<p>
-  <strong>Dob:</strong>
-  <%= @player.dob %>
-</p>
+        <p>
+          <strong>State:</strong>
+          <%= @player.state %>
+        </p>
 
-<p>
-  <strong>Address1:</strong>
-  <%= @player.address1 %>
-</p>
-
-<p>
-  <strong>Address2:</strong>
-  <%= @player.address2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @player.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @player.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @player.zip %>
-</p>
-
-<p>
-  <strong>Experience:</strong>
-  <%= @player.experience %>
-</p>
- 
+        <p>
+          <strong>Zip:</strong>
+          <%= @player.zip %>
+        </p>
 
 
-<%= link_to 'Edit', edit_player_path(@player) %> |
-<%= link_to 'Back', players_path %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+          <h4><strong>Experience:</strong></h4>
+          <%= @player.experience %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

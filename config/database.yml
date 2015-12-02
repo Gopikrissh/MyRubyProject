@@ -5,11 +5,11 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: <%=ENV["DATABASE_NAME"]%>
+  adapter: postgresql
   pool: 5
-  host: <%=ENV["DATABASE_HOST"]%>
-  username: <%=ENV["DATABASE_USER"]%>
-  password: <%=ENV["DATABASE_PASSWORD"]%>
+  host: localhost
+  username: postgres
+  password: asdf4321!!
   timeout: 5000
 
 development:

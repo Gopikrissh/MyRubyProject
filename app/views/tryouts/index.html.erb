@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h1>Tryouts <%= link_to 'New Tryout', new_tryout_path, class: 'pull-right btn btn-success', style: 'color:white' %></h1>
@@ -22,7 +20,7 @@
       <tbody>
       <% @tryouts.each do |tryout| %>
           <tr>
-            <td><%= link_to tryout.date.to_s(:long), tryout %></td>
+            <td><%= link_to tryout.date.strftime('%A %d, %Y') + ' - ' + tryout.date.strftime('%I:%M %P'), tryout %></td>
             <td>$<%= number_with_precision(tryout.fee, precision: 2) %></td>
             <td><%= tryout.address1 %></td>
             <td><%= tryout.address2 %></td>
